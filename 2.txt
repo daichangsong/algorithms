@@ -1,0 +1,71 @@
+题号：2 两数相加
+
+给定两个非空链表来代表两个非负数，位数按照逆序方式存储，它们的每个节点只存储单个数字。将这两数相加会返回一个新的链表。
+
+你可以假设除了数字 0 之外，这两个数字都不会以零开头。
+
+C代码：
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
+    int x1 = 0;
+    int x2 = 0;
+    int y = 0;
+
+    struct ListNode *p1, *p2;
+    p1 = l1;
+    p2 = l2;
+    struct ListNode *pln, *p, *q;
+    pln = NULL;
+
+    while(p1 != NULL || p2 != NULL) {
+        p = ((struct ListNode *)malloc(sizeof(struct ListNode)));
+        p->next = NULL;
+        
+        if(p1 == NULL) {
+            x1 = 0;
+        } else {
+            x1 += p1->val;
+            p1 = p1->next;
+        }
+        if(p2 == NULL) {
+            x2 = 0;
+        } else {
+            x2 += p2->val;
+            p2 = p2->next;
+        }
+
+        y += (x1 + x2);
+        x1 = 0;
+        x2 = 0;
+        if(y<10) {
+            p->val = y;
+        } else {
+            p->val = y%10;  
+        }
+        
+        if(pln == NULL) {
+            pln = p;
+        } else {
+            q->next = p;
+        }
+        q = p;
+
+        y/=10;
+    }
+    
+    if(y != 0) {
+        p = ((struct ListNode *)malloc(sizeof(struct ListNode)));
+        p ->next = NULL;
+        p->val = 1;
+        q->next = p;
+    }
+
+    return pln;
+}

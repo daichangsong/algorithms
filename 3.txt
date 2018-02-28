@@ -1,0 +1,40 @@
+题号：3 无重复字符的最长子串
+
+给定一个字符串，找出不含有重复字符的 最长子串 的长度。
+
+C代码：
+
+int lengthOfLongestSubstring(char* s) {
+    int l = strlen(s);
+    int max = 0;
+    int max_len = 0;
+    int si = 0;
+    int i, j;
+    
+    for(i=0; i<l; i++) {
+        if(max_len == 0) {
+            max_len = 1;
+            max = max_len;
+        }
+        for(j=si; j<i; j++) {
+            if(s[i] != s[j]) {
+                if(j == i-1) {
+                    max_len++;
+                    if(max_len > max) {
+                           max = max_len;
+                    }
+                }
+            } else {
+                if(max_len > max) {
+                    max = max_len;
+                }
+                si = j+1;
+                max_len = i-j;
+                break;
+            }
+        }
+
+    }
+    
+    return max;
+}
