@@ -1,8 +1,8 @@
-��ţ�3 ���ظ��ַ�����Ӵ�
+题号：3 无重复字符的最长子串
 
-����һ���ַ������ҳ��������ظ��ַ��� ��Ӵ� �ĳ��ȡ�
+给定一个字符串，找出不含有重复字符的 最长子串 的长度。
 
-C���룺
+C代码：
 
 int lengthOfLongestSubstring(char* s) {
     int l = strlen(s);
