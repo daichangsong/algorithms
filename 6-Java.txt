@@ -1,0 +1,39 @@
+class Solution {
+    public String convert(String s, int numRows) {
+        int len = s.length();
+        if(s == null  len  1  numRows = 1) {
+            return s;
+        }
+        
+        ListList list = new ArrayListList();
+        
+        for(int i = 0; i  numRows; i++){
+            list.add(new ArrayListCharacter());
+        }
+        
+        int index = 0;
+        int i = 0;
+        while(i  len) {
+            while(index  numRows && i  len){
+                list.get(index).add(s.charAt(i));
+                index ++;
+                i++;
+            }
+            if(index == numRows){
+                index -= 2;
+            }
+            while(index  0 && i  len){
+                list.get(index).add(s.charAt(i));
+                i++;
+                index --;
+            }
+        }
+        StringBuffer sb = new StringBuffer();
+        for(int j =0; j  list.size(); j++){
+            for(int k = 0; k  list.get(j).size(); k++){
+                sb.append(list.get(j).get(k));
+            }
+        }
+        return sb.toString();
+    }
+}
